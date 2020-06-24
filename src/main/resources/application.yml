@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=consumer-service
+    username: postgres
+    password: postgresql@123
+  jpa:
+    hibernate.ddl-auto: create
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+  flyway:
+    enabled: false
+
+server:
+  jetty:
+    accesslog:
+      enabled: true
+      log-latency: true
+app:
+  security:
+    nonceLength: 64
+    hashingAlgorithm: SHA-512
+    passcodeLength: 128
+    token:
+      accessToken:
+        ttl: 18000000
+      refreshToken:
+        ttl: 36000000
+  featureToggles:
+    emailWhitelist: true
+    otpVerification: true
+    biometric: true
+    otpGeneration: true
+
+twilio:
+  account_sid: ACb2da1c0e7608610c405d7737c56c0fa7
+  auth_token: e4e8032532e35b7551370c0934501e93
+  trial_number: +12058431073
+  smsExpLmt: 1200000
+  otpLengthUpperLmt: 10000
+  otpLengthLowerLmt: 1000
+
+
+
